@@ -3,26 +3,143 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kent Gabriel Cabrera | IT Professional</title>
+    <title>Kent Gabriel Cabrera | IT Professional Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; margin: 0; padding: 0; }
-        header { background: #2c3e50; color: #fff; padding: 2rem 0; text-align: center; }
-        header h1 { margin: 0; font-size: 2.5rem; }
-        header p { font-size: 1.2rem; opacity: 0.8; }
-        .container { max-width: 900px; margin: auto; padding: 2rem; }
-        h2 { border-bottom: 2px solid #3498db; padding-bottom: 0.5rem; color: #2c3e50; margin-top: 2rem; }
-        .btn { display: inline-block; background: #3498db; color: #fff; padding: 10px 20px; text-decoration: none; border-radius: 5px; margin-top: 10px; }
-        .btn:hover { background: #2980b9; }
-        
-        .project-card { border: 1px solid #ddd; padding: 1.5rem; border-radius: 8px; background: #f9f9f9; margin-bottom: 1rem; }
-        .skills-grid { display: flex; flex-wrap: wrap; gap: 10px; }
-        .skill-tag { background: #eee; padding: 5px 15px; border-radius: 20px; font-size: 0.9rem; }
-        
-        .job { margin-bottom: 1.5rem; }
-        .job h3 { margin-bottom: 0.2rem; }
-        .date { color: #777; font-size: 0.9rem; font-style: italic; }
+        /* CSS Variables for easy color theme management */
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2c3e50;
+            --text-color: #333;
+            --light-bg: #ecf0f1;
+            --card-bg: #fff;
+            --shadow-light: 0 4px 10px rgba(0, 0, 0, 0.05);
+            --transition-speed: 0.3s;
+        }
 
-        @media (max-width: 600px) { .container { padding: 1rem; } }
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            background-color: var(--light-bg);
+        }
+
+        /* --- Header & Hero Section --- */
+        header {
+            background: var(--secondary-color);
+            color: #fff;
+            padding: 4rem 0 2rem;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 3rem;
+            font-weight: 700;
+        }
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-top: 0.5rem;
+            font-weight: 300;
+        }
+        
+        /* --- General Layout --- */
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            padding: 2rem;
+        }
+        section {
+            margin-bottom: 3rem;
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow-light);
+        }
+        h2 {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            border-bottom: 3px solid var(--primary-color);
+            padding-bottom: 0.5rem;
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+        }
+        
+        /* --- Buttons & Interactivity --- */
+        .btn {
+            display: inline-block;
+            background: var(--primary-color);
+            color: #fff;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 8px;
+            margin-top: 15px;
+            font-weight: 600;
+            transition: background var(--transition-speed), transform var(--transition-speed);
+        }
+        .btn:hover {
+            background: #2980b9; /* Slightly darker shade */
+            transform: translateY(-2px); /* Subtle lift effect */
+        }
+        
+        /* --- Project Card Styling --- */
+        .project-card {
+            border: 1px solid #eee;
+            padding: 2rem;
+            border-radius: 8px;
+            background: #fff;
+            transition: box-shadow var(--transition-speed);
+        }
+        .project-card:hover {
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* --- Skills Grid (Interactive & Modern) --- */
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px; /* Increased space for visual breathing room */
+        }
+        .skill-tag {
+            background: #f0f3f5;
+            color: var(--secondary-color);
+            padding: 8px 18px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: default;
+            transition: background var(--transition-speed), transform var(--transition-speed);
+        }
+        .skill-tag:hover {
+            background: var(--primary-color);
+            color: #fff;
+            transform: scale(1.05); /* Interactive scale effect */
+        }
+        
+        /* --- Experience & Education --- */
+        .job h3 { 
+            margin-bottom: 0.2rem; 
+            color: var(--secondary-color);
+        }
+        .date { 
+            color: #777; 
+            font-size: 0.9rem; 
+            font-style: italic; 
+            margin-bottom: 10px;
+            display: block;
+        }
+        ul {
+            padding-left: 20px;
+        }
+
+        /* --- Responsiveness --- */
+        @media (max-width: 768px) {
+            header h1 { font-size: 2.5rem; }
+            .container { padding: 1rem; }
+            section { padding: 1.5rem; }
+        }
     </style>
 </head>
 <body>
@@ -31,7 +148,7 @@
     <div class="container">
         <h1>Kent Gabriel Cabrera</h1>
         <p>Aspiring IT Professional | Web Development & System Support</p>
-        <a href="mailto:kg.cabrera07@gmail.com" class="btn">Contact Me</a>
+        <a href="mailto:kg.cabrera07@gmail.com" class="btn">Get In Touch</a>
     </div>
 </header>
 
@@ -40,63 +157,55 @@
     <section id="about">
         <h2>About Me</h2>
         <p>
-            I am an adaptable and proactive IT professional with hands-on experience in programming languages including C++, C#, Java, Python, PHP, and MySQL. 
-            I am proficient in web development using HTML, CSS, and JavaScript and eager to contribute technical expertise in a Microsoft-driven environment.
+            [cite_start]I am an adaptable and proactive IT professional with hands-on experience in programming languages including C++, C#, Java, Python, PHP, and MySQL[cite: 4, 15]. 
+            [cite_start]I am proficient in web development using HTML, CSS, and JavaScript [cite: 5] [cite_start]and eager to contribute technical expertise in a Microsoft-driven environment[cite: 7]. [cite_start]I am known for clear communication, adaptability, and a proactive approach to problem-solving[cite: 6].
         </p>
     </section>
 
     <section id="projects">
-        <h2>Featured Project</h2>
+        <h2>Featured Project (Showcasing Web Dev)</h2>
         <div class="project-card">
-            <h3>Libratrack: Library Management System</h3>
-            <p><strong>Tech Stack:</strong> Web-based, QR/Barcode Technology</p>
+            <h3>Libratrack: Web-based Library Management System</h3>
+            [cite_start]<p><strong>Thesis Overview:</strong> Development of a Web-based Library Management System for Pamantasan Ng Lungsod Ng Muntinlupa[cite: 31].</p>
+            [cite_start]<p><strong>Key Technologies:</strong> PHP, MySQL, HTML, CSS, and QR/Barcode Technology implementation[cite: 31, 15].</p>
             <p>
-                Developed a web-based library management system for Pamantasan Ng Lungsod Ng Muntinlupa. 
-                The system utilizes QR and barcode technology to streamline book tracking and user management.
+                This project demonstrates practical skills in full-stack development, database management, and implementing modern tracking technology for operational efficiency.
             </p>
-            </div>
+            <a href="#" class="btn" style="background: #e74c3c;">View Code Repository (Update Link!)</a>
+        </div>
     </section>
 
     <section id="skills">
         <h2>Technical Skills</h2>
         <div class="skills-grid">
-            <span class="skill-tag">HTML/CSS</span>
-            <span class="skill-tag">JavaScript</span>
             <span class="skill-tag">PHP</span>
             <span class="skill-tag">MySQL</span>
+            <span class="skill-tag">HTML/CSS/JS</span>
             <span class="skill-tag">Java</span>
             <span class="skill-tag">Python</span>
             <span class="skill-tag">C++ / C#</span>
+            <span class="skill-tag">Windows OS / Office</span>
             <span class="skill-tag">Active Directory</span>
         </div>
     </section>
 
     <section id="experience">
-        <h2>Work Experience</h2>
+        <h2>Work & Intern Experience</h2>
         
         <div class="job">
             <h3>Data Miner Intern</h3>
-            <div class="date">Pamantasan ng Lungsod ng Muntinlupa (Feb 2025 - June 2025)</div>
+            [cite_start]<span class="date">Pamantasan ng Lungsod ng Muntinlupa, ICT Office (Feb 2025 - June 2025) [cite: 25, 28]</span>
             <ul>
-                <li>Located and contacted alumni through various platforms.</li>
-                <li>Updated collected information into the system accurately.</li>
+                [cite_start]<li>Locate and contact alumni of PLMUN through various platforms[cite: 25].</li>
+                [cite_start]<li>Updated the collected information into the system accurately[cite: 27].</li>
             </ul>
         </div>
 
         <div class="job">
             <h3>Virtual Assistant</h3>
-            <div class="date">Life Changing Tuition (Nov 2023 - Jul 2024)</div>
+            [cite_start]<span class="date">Life Changing Tuition (Nov 2023 - Jul 2024) [cite: 21, 22]</span>
             <ul>
-                <li>Created and organized educational materials, including test books and mock tests.</li>
-                <li>Assigned students to different classes based on their needs.</li>
-            </ul>
-        </div>
-
-        <div class="job">
-            <h3>Admin Trainee Intern</h3>
-            <div class="date">School Division Office - Muntinlupa (Feb 2020 - Mar 2020)</div>
-            <ul>
-                <li>Managed and organized school documents using database systems for prompt retrieval.</li>
+                [cite_start]<li>Created and organized educational materials, including test books and mock tests[cite: 23].</li>
             </ul>
         </div>
     </section>
@@ -104,10 +213,10 @@
     <section id="education">
         <h2>Education</h2>
         <p><strong>Bachelor of Science in Information Technology</strong><br>
-        Pamantasan ng Lungsod ng Muntinlupa (2022 - 2025)</p>
+        [cite_start]Pamantasan ng Lungsod ng Muntinlupa (2022 - 2025) [cite: 30]</p>
         
         <p><strong>Bachelor of Science in Computer Engineering</strong><br>
-        Colegio De Muntinlupa (2020 - 2022) - Dean's Lister</p>
+        [cite_start]Colegio De Muntinlupa (2020 - 2022) - Dean's Lister [cite: 30]</p>
     </section>
 
 </div>
