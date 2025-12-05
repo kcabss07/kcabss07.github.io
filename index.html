@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kent Gabriel Cabrera | IT Professional Portfolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
     <style>
-        /* CSS Variables for easy color theme management */
+        /* --- CSS Variables and Global Styling --- */
         :root {
             --primary-color: #3498db;
             --secondary-color: #2c3e50;
@@ -17,6 +18,15 @@
             --transition-speed: 0.3s;
         }
 
+        /* --- Dark Mode Variables (Overwrites default) --- */
+        body.dark-mode {
+            --text-color: #ecf0f1;
+            --light-bg: #2c3e50;
+            --card-bg: #34495e;
+            --shadow-light: 0 4px 10px rgba(0, 0, 0, 0.5);
+            --secondary-color: #3498db; /* Switch secondary color for contrast */
+        }
+        
         body {
             font-family: 'Poppins', sans-serif;
             line-height: 1.6;
@@ -24,39 +34,46 @@
             margin: 0;
             padding: 0;
             background-color: var(--light-bg);
+            transition: background-color var(--transition-speed), color var(--transition-speed);
         }
 
-        /* --- Header & Hero Section --- */
+        /* --- Header & Theme Toggle --- */
         header {
             background: var(--secondary-color);
             color: #fff;
             padding: 4rem 0 2rem;
             text-align: center;
+            position: relative; /* Needed for toggle button positioning */
         }
-        header h1 {
-            margin: 0;
-            font-size: 3rem;
-            font-weight: 700;
+        header h1 { margin: 0; font-size: 3rem; font-weight: 700; }
+        header p { font-size: 1.2rem; opacity: 0.9; margin-top: 0.5rem; font-weight: 300; }
+
+        #theme-toggle {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: 2px solid #fff;
+            color: #fff;
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background var(--transition-speed);
         }
-        header p {
-            font-size: 1.2rem;
-            opacity: 0.9;
-            margin-top: 0.5rem;
-            font-weight: 300;
+        #theme-toggle:hover {
+            background: rgba(255, 255, 255, 0.1);
         }
-        
+
         /* --- General Layout --- */
-        .container {
-            max-width: 1000px;
-            margin: auto;
-            padding: 2rem;
-        }
+        .container { max-width: 1000px; margin: auto; padding: 2rem; }
         section {
             margin-bottom: 3rem;
             background: var(--card-bg);
             padding: 2rem;
             border-radius: 12px;
             box-shadow: var(--shadow-light);
+            transition: background-color var(--transition-speed), box-shadow var(--transition-speed);
         }
         h2 {
             font-size: 1.8rem;
@@ -80,58 +97,32 @@
             transition: background var(--transition-speed), transform var(--transition-speed);
         }
         .btn:hover {
-            background: #2980b9; /* Slightly darker shade */
-            transform: translateY(-2px); /* Subtle lift effect */
-        }
-        
-        /* --- Project Card Styling --- */
-        .project-card {
-            border: 1px solid #eee;
-            padding: 2rem;
-            border-radius: 8px;
-            background: #fff;
-            transition: box-shadow var(--transition-speed);
-        }
-        .project-card:hover {
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            background: #2980b9;
+            transform: translateY(-2px);
         }
 
-        /* --- Skills Grid (Interactive & Modern) --- */
-        .skills-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px; /* Increased space for visual breathing room */
+        .project-card:hover {
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
         }
+        body.dark-mode .project-card:hover {
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.8);
+        }
+
+        .skills-grid { display: flex; flex-wrap: wrap; gap: 12px; }
         .skill-tag {
-            background: #f0f3f5;
+            background: var(--light-bg);
             color: var(--secondary-color);
             padding: 8px 18px;
             border-radius: 25px;
             font-size: 0.9rem;
             font-weight: 500;
             cursor: default;
-            transition: background var(--transition-speed), transform var(--transition-speed);
+            transition: background var(--transition-speed), transform var(--transition-speed), color var(--transition-speed);
         }
         .skill-tag:hover {
             background: var(--primary-color);
             color: #fff;
-            transform: scale(1.05); /* Interactive scale effect */
-        }
-        
-        /* --- Experience & Education --- */
-        .job h3 { 
-            margin-bottom: 0.2rem; 
-            color: var(--secondary-color);
-        }
-        .date { 
-            color: #777; 
-            font-size: 0.9rem; 
-            font-style: italic; 
-            margin-bottom: 10px;
-            display: block;
-        }
-        ul {
-            padding-left: 20px;
+            transform: scale(1.05);
         }
 
         /* --- Responsiveness --- */
@@ -146,6 +137,8 @@
 
 <header>
     <div class="container">
+        <button id="theme-toggle">🌙 Dark Mode</button>
+        
         <h1>Kent Gabriel Cabrera</h1>
         <p>Aspiring IT Professional | Web Development & System Support</p>
         <a href="mailto:kg.cabrera07@gmail.com" class="btn">Get In Touch</a>
@@ -157,8 +150,8 @@
     <section id="about">
         <h2>About Me</h2>
         <p>
-            [cite_start]I am an adaptable and proactive IT professional with hands-on experience in programming languages including C++, C#, Java, Python, PHP, and MySQL[cite: 4, 15]. 
-            [cite_start]I am proficient in web development using HTML, CSS, and JavaScript [cite: 5] [cite_start]and eager to contribute technical expertise in a Microsoft-driven environment[cite: 7]. [cite_start]I am known for clear communication, adaptability, and a proactive approach to problem-solving[cite: 6].
+            I am an adaptable and proactive IT professional with hands-on experience in programming languages including C++, C#, Java, Python, PHP, and MySQL. 
+            I am proficient in web development using HTML, CSS, and JavaScript and eager to contribute technical expertise in a Microsoft-driven environment. I am known for clear communication, adaptability, and a proactive approach to problem-solving[cite: 4, 5, 6, 7].
         </p>
     </section>
 
@@ -166,12 +159,12 @@
         <h2>Featured Project (Showcasing Web Dev)</h2>
         <div class="project-card">
             <h3>Libratrack: Web-based Library Management System</h3>
-            [cite_start]<p><strong>Thesis Overview:</strong> Development of a Web-based Library Management System for Pamantasan Ng Lungsod Ng Muntinlupa[cite: 31].</p>
-            [cite_start]<p><strong>Key Technologies:</strong> PHP, MySQL, HTML, CSS, and QR/Barcode Technology implementation[cite: 31, 15].</p>
+            <p><strong>Thesis Overview:</strong> Development of a Web-based Library Management System for Pamantasan Ng Lungsod Ng Muntinlupa[cite: 31].</p>
+            <p><strong>Key Technologies:</strong> PHP, MySQL, HTML, CSS, and QR/Barcode Technology implementation[cite: 15, 31].</p>
             <p>
                 This project demonstrates practical skills in full-stack development, database management, and implementing modern tracking technology for operational efficiency.
             </p>
-            <a href="#" class="btn" style="background: #e74c3c;">View Code Repository (Update Link!)</a>
+            <a href="" class="btn" style="background: #e74c3c;">View Code Repository (Update Link!)</a>
         </div>
     </section>
 
@@ -194,18 +187,18 @@
         
         <div class="job">
             <h3>Data Miner Intern</h3>
-            [cite_start]<span class="date">Pamantasan ng Lungsod ng Muntinlupa, ICT Office (Feb 2025 - June 2025) [cite: 25, 28]</span>
+            <span class="date">Pamantasan ng Lungsod ng Muntinlupa, ICT Office (Feb 2025 - June 2025) </span>
             <ul>
-                [cite_start]<li>Locate and contact alumni of PLMUN through various platforms[cite: 25].</li>
-                [cite_start]<li>Updated the collected information into the system accurately[cite: 27].</li>
+                <li>Located and contacted alumni of PLMUN through various platforms.</li>
+                <li>Updated the collected information into the system accurately.</li>
             </ul>
         </div>
 
         <div class="job">
             <h3>Virtual Assistant</h3>
-            [cite_start]<span class="date">Life Changing Tuition (Nov 2023 - Jul 2024) [cite: 21, 22]</span>
+            <span class="date">Life Changing Tuition (Nov 2023 - Jul 2024)</span>
             <ul>
-                [cite_start]<li>Created and organized educational materials, including test books and mock tests[cite: 23].</li>
+                <li>Created and organized educational materials, including test books and mock tests.</li>
             </ul>
         </div>
     </section>
@@ -213,13 +206,43 @@
     <section id="education">
         <h2>Education</h2>
         <p><strong>Bachelor of Science in Information Technology</strong><br>
-        [cite_start]Pamantasan ng Lungsod ng Muntinlupa (2022 - 2025) [cite: 30]</p>
+        Pamantasan ng Lungsod ng Muntinlupa (2022 - 2025) </p>
         
         <p><strong>Bachelor of Science in Computer Engineering</strong><br>
-        [cite_start]Colegio De Muntinlupa (2020 - 2022) - Dean's Lister [cite: 30]</p>
+        Colegio De Muntinlupa (2020 - 2022) - Dean's Lister </p>
     </section>
 
 </div>
+
+<script>
+    const toggleButton = document.getElementById('theme-toggle');
+    const body = document.body;
+    const localStorageKey = 'themePreference';
+
+    // Function to set the theme based on the preference
+    function setTheme(theme) {
+        if (theme === 'dark') {
+            body.classList.add('dark-mode');
+            toggleButton.textContent = '☀️ Light Mode';
+        } else {
+            body.classList.remove('dark-mode');
+            toggleButton.textContent = '🌙 Dark Mode';
+        }
+        localStorage.setItem(localStorageKey, theme);
+    }
+
+    // Check saved preference on load
+    document.addEventListener('DOMContentLoaded', () => {
+        const savedTheme = localStorage.getItem(localStorageKey) || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        setTheme(savedTheme);
+    });
+
+    // Event listener for the toggle button
+    toggleButton.addEventListener('click', () => {
+        const currentTheme = body.classList.contains('dark-mode') ? 'light' : 'dark';
+        setTheme(currentTheme);
+    });
+</script>
 
 </body>
 </html>
